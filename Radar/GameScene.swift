@@ -12,6 +12,8 @@ class GameScene: SKScene {
 
     let redColor = SKColor(red: 0xAA/0xFF, green: 0, blue: 0, alpha: 1)
 
+    let period = NSTimeInterval(8)
+
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
 
@@ -22,7 +24,7 @@ class GameScene: SKScene {
         longLine.position = CGPoint(x: midX, y: midY)
         longLine.name = "Long Line"
         longLine.anchorPoint = CGPoint(x: 0, y: 0.5)
-        let rotationAction = SKAction.rotateByAngle(CGFloat(2*M_PI), duration: NSTimeInterval(2))
+        let rotationAction = SKAction.rotateByAngle(CGFloat(2*M_PI), duration: period)
         longLine.runAction(SKAction.repeatActionForever(rotationAction))
 
         let circle = SKShapeNode(circleOfRadius: 30)
@@ -32,16 +34,17 @@ class GameScene: SKScene {
 
         let shortLine = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: CGRectGetWidth(circle.frame)/2, height: 1))
         shortLine.anchorPoint = CGPoint(x: 0, y: 0.5)
-        let reverseRotationAction = SKAction.rotateByAngle(CGFloat(-2*M_PI), duration: NSTimeInterval(0.1))
+        let reverseRotationAction = SKAction.rotateByAngle(CGFloat(-2*M_PI), duration: period/8)
         shortLine.runAction(SKAction.repeatActionForever(reverseRotationAction))
 
         let emitterNode = SKEmitterNode()
         emitterNode.position = CGPoint(x: shortLine.size.width, y: 0)
-        emitterNode.particleAlphaSpeed = -0.5
-        emitterNode.particleBirthRate = 60
+        emitterNode.particleAlphaSpeed = CGFloat(-1/period)
+        emitterNode.particleBirthRate = 500
+        emitterNode.particleTexture = SKTexture(imageNamed: "Circle")
         emitterNode.particleColor = redColor
-        emitterNode.particleLifetime = 2
-        emitterNode.particleTexture = SKTexture(noiseWithSmoothness: 0, size: CGSize(width: 5, height: 5), grayscale: false)
+        emitterNode.particleColorBlendFactor = 1
+        emitterNode.particleLifetime = CGFloat(period)
         emitterNode.targetNode = self
 
         addChild(longLine)
