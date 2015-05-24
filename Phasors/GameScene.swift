@@ -17,8 +17,8 @@ class GameScene: SKScene {
     }
 
     private var phasorNodes = [PhasorNode]()
-    private var periods = [NSTimeInterval](count: 8, repeatedValue: 2.0)
-    private var radii = [CGFloat](count: 8, repeatedValue: 0.5)
+    private var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
+    private var radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
 
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
