@@ -47,14 +47,14 @@ class GameViewController: UIViewController {
             for var i = oldNumberOfSegments; i < newNumberOfSegments; ++i {
                 phasorSegmentedControl.insertSegmentWithTitle("\(i+1)", atIndex: i, animated: true)
             }
-            gameScene.addPhasorNode()
         } else if newNumberOfSegments < oldNumberOfSegments {
             for i in 0..<(oldNumberOfSegments - newNumberOfSegments) {
                 let index = phasorSegmentedControl.numberOfSegments-1
                 phasorSegmentedControl.removeSegmentAtIndex(index, animated: true)
             }
-            gameScene.removePhasorNode()
         }
+
+        gameScene.numberOfPhasorNodes = phasorSegmentedControl.numberOfSegments
     }
 
     @IBAction func periodSelected(sender: UISegmentedControl) {
