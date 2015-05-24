@@ -88,6 +88,11 @@ class GameViewController: UIViewController {
             }
         }
 
+        if phasorSegmentedControl.selectedSegmentIndex == UISegmentedControlNoSegment {
+            phasorSegmentedControl.selectedSegmentIndex = newNumberOfSegments-1
+            phasorSelected(phasorSegmentedControl)
+        }
+
         gameScene.numberOfPhasorNodes = phasorSegmentedControl.numberOfSegments
     }
 
