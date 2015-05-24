@@ -10,18 +10,22 @@ import SpriteKit
 
 class PhasorNode: SKNode {
 
-    let line = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 30, height: 1))
+    let line: SKSpriteNode
     let trail = SKEmitterNode()
 
     private let particleBirthRate: CGFloat = 500
+    private let radiusScaler: CGFloat = 60
     private var globalTintColor: SKColor {
         return (UIApplication.sharedApplication().windows.first as! UIWindow).rootViewController!.view.tintColor
     }
 
-    init(period: NSTimeInterval) {
+    init(period: NSTimeInterval, radius: CGFloat) {
+        line = SKSpriteNode(color: SKColor.blackColor(),
+            size: CGSize(width: radiusScaler*radius, height: 1))
+
         super.init()
 
-        let circle = SKShapeNode(circleOfRadius: 30)
+        let circle = SKShapeNode(circleOfRadius: radiusScaler*radius)
         circle.strokeColor = globalTintColor
 
         line.anchorPoint = CGPoint(x: 0, y: 0.5)

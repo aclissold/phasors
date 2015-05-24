@@ -12,6 +12,7 @@ import SpriteKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var controlCenterView: UIView!
+    @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var phasorSegmentedControl: UISegmentedControl!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -97,11 +98,16 @@ class GameViewController: UIViewController {
 
     @IBAction func phasorSelected(sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
+
         let period = gameScene.periodForPhasor(index)
         periodSegmentedControl.selectedSegmentIndex = find(periods, period)!
+
+        let radius = gameScene.radiusForPhasor(index)
+        radiusSlider.value = Float(radius)
     }
 
     @IBAction func radiusChanged(sender: UISlider) {
+        gameScene.setRadius(sender.value, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
     }
 
     override func prefersStatusBarHidden() -> Bool {

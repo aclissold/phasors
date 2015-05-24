@@ -108,6 +108,7 @@
                         <outlet property="controlCenterView" destination="aMc-ka-oXz" id="LL1-YX-TWy"/>
                         <outlet property="periodSegmentedControl" destination="iA9-Eo-fhc" id="svF-2I-A8p"/>
                         <outlet property="phasorSegmentedControl" destination="8n2-BR-PKZ" id="ipt-9q-7EI"/>
+                        <outlet property="radiusSlider" destination="dJF-rT-Pkv" id="et3-bY-q5k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
