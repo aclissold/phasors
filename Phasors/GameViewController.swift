@@ -27,8 +27,8 @@ class GameViewController: UIViewController {
         addGestureRecognizers()
         
         let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         if skView.showsDrawCount || skView.showsFields || skView.showsFPS ||
             skView.showsNodeCount || skView.showsPhysics || skView.showsQuadCount {
