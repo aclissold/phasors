@@ -59,8 +59,8 @@ class GameScene: SKScene {
             }
             phasorNode.trail.targetNode = self
 
-            if i == numberOfPhasorNodes-1 {
-                phasorNode.showTrail()
+            if i != numberOfPhasorNodes-1 {
+                phasorNode.hideTrail()
             }
 
             phasorNodes.append(phasorNode)
