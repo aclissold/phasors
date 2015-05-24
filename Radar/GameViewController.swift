@@ -47,13 +47,13 @@ class GameViewController: UIViewController {
             for var i = oldNumberOfSegments; i < newNumberOfSegments; ++i {
                 phasorSegmentedControl.insertSegmentWithTitle("\(i+1)", atIndex: i, animated: true)
             }
-            gameScene.addPhasor()
+            gameScene.addPhasorNode()
         } else if newNumberOfSegments < oldNumberOfSegments {
             for i in 0..<(oldNumberOfSegments - newNumberOfSegments) {
                 let index = phasorSegmentedControl.numberOfSegments-1
                 phasorSegmentedControl.removeSegmentAtIndex(index, animated: true)
             }
-            gameScene.removePhasor()
+            gameScene.removePhasorNode()
         }
     }
 
