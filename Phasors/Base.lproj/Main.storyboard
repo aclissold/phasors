@@ -38,7 +38,7 @@
                                             <action selector="radiusChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="3BT-1Z-mq8"/>
                                         </connections>
                                     </slider>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-Eo-fhc">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-Eo-fhc">
                                         <rect key="frame" x="66" y="46" width="526" height="29"/>
                                         <segments>
                                             <segment title="8s"/>
