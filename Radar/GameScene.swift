@@ -53,4 +53,13 @@ class GameScene: SKScene {
         shortLine.addChild(emitterNode)
     }
 
+    func setPeriod(period: NSTimeInterval, forPhasor phasor: Int) {
+    }
+
+    func addPhasor() {
+    }
+
+    func removePhasor() {
+    }
+
 }
