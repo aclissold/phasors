@@ -102,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomConstraint" destination="4Zb-em-Eh5" id="R6L-NF-yGm"/>
+                        <outlet property="controlCenterView" destination="aMc-ka-oXz" id="LL1-YX-TWy"/>
                         <outlet property="phasorSegmentedControl" destination="8n2-BR-PKZ" id="ipt-9q-7EI"/>
                     </connections>
                 </viewController>

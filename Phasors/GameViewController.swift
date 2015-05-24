@@ -11,6 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var controlCenterView: UIView!
     @IBOutlet weak var phasorSegmentedControl: UISegmentedControl!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
@@ -20,6 +21,8 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        addGestureRecognizers()
         
         let skView = self.view as! SKView
         skView.showsFPS = true
@@ -36,15 +39,44 @@ class GameViewController: UIViewController {
         skView.presentScene(gameScene)
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    func addGestureRecognizers() {
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
+        swipeUpGestureRecognizer.direction = .Up
+
+        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
+        swipeDownGestureRecognizer.direction = .Down
+
+        view.addGestureRecognizer(swipeUpGestureRecognizer)
+        view.addGestureRecognizer(swipeDownGestureRecognizer)
+    }
+
+    func handleSwipe(recognizer: UISwipeGestureRecognizer) {
+        if !controlCenterView.hidden && recognizer.direction == .Down {
+            // Hide.
+            UIView.animateWithDuration(0.4, animations: {
+                self.controlCenterView.frame.origin.y += self.controlCenterView.frame.size.height + self.bottomConstraint.constant
+                }, completion: { _ in
+                    self.controlCenterView.hidden = true
+                })
+        } else if controlCenterView.hidden && recognizer.direction == .Up {
+            // Show.
+            controlCenterView.hidden = false
+            UIView.animateWithDuration(0.6,
+                delay: 0,
+                usingSpringWithDamping: 0.75,
+                initialSpringVelocity: 0.25,
+                options: .CurveEaseIn,
+                animations: {
+                    self.controlCenterView.frame.origin.y -= self.controlCenterView.frame.size.height + self.bottomConstraint.constant
+                }, completion: nil)
+        }
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
         let oldNumberOfSegments = phasorSegmentedControl.numberOfSegments
         let newNumberOfSegments = Int(sender.value)
         if newNumberOfSegments > oldNumberOfSegments {
-            for var i = oldNumberOfSegments; i < newNumberOfSegments; ++i {
+            for i in oldNumberOfSegments..<newNumberOfSegments {
                 phasorSegmentedControl.insertSegmentWithTitle("\(i+1)", atIndex: i, animated: true)
             }
         } else if newNumberOfSegments < oldNumberOfSegments {
@@ -63,6 +95,10 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func radiusChanged(sender: UISlider) {
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 }
