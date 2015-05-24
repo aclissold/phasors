@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Radar.xcodeproj">
+      location = "self:/Users/aclissold/Code/iOS/Phasors/Phasors.xcodeproj">
    </FileRef>
 </Workspace>

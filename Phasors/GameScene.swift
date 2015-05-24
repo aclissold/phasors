@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  Radar
+//  Phasors
 //
 //  Created by Andrew Clissold on 5/9/15.
 //  Copyright (c) 2015 Andrew Clissold. All rights reserved.
