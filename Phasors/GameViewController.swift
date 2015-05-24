@@ -74,6 +74,10 @@ class GameViewController: UIViewController {
         }
     }
 
+    @IBAction func stemsSwitchToggled(sender: UISwitch) {
+        gameScene.stemsEnabled = sender.on
+    }
+
     @IBAction func stepperChanged(sender: UIStepper) {
         let oldNumberOfSegments = phasorSegmentedControl.numberOfSegments
         let newNumberOfSegments = Int(sender.value)

@@ -10,7 +10,7 @@ import SpriteKit
 
 class PhasorNode: SKNode {
 
-    let line: SKSpriteNode
+    let line = SKSpriteNode()
     let trail = SKEmitterNode()
 
     private let particleBirthRate: CGFloat = 500
@@ -19,18 +19,23 @@ class PhasorNode: SKNode {
         return (UIApplication.sharedApplication().windows.first as! UIWindow).rootViewController!.view.tintColor
     }
 
-    init(period: NSTimeInterval, radius: CGFloat) {
-        line = SKSpriteNode(color: SKColor.blackColor(),
-            size: CGSize(width: radiusScaler*radius, height: 1))
-
+    init(period: NSTimeInterval, radius: CGFloat, showStems shouldShowStems: Bool) {
         super.init()
 
-        let circle = SKShapeNode(circleOfRadius: radiusScaler*radius)
-        circle.strokeColor = globalTintColor
-
+        if shouldShowStems {
+            line.color = SKColor.blackColor()
+        } else {
+            line.color = SKColor.clearColor()
+        }
+        line.size = CGSize(width: radiusScaler*radius, height: 1)
         line.anchorPoint = CGPoint(x: 0, y: 0.5)
         let rotationAction = SKAction.rotateByAngle(CGFloat(2*M_PI), duration: period)
         line.runAction(SKAction.repeatActionForever(rotationAction))
+
+        let circle = SKShapeNode(circleOfRadius: radiusScaler*radius)
+        if shouldShowStems {
+            circle.strokeColor = globalTintColor
+        }
 
         trail.position = CGPoint(x: line.size.width, y: 0)
         trail.particleAlphaSpeed = CGFloat(-1/period)

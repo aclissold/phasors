@@ -15,6 +15,11 @@ class GameScene: SKScene {
             resetPhasorNodes()
         }
     }
+    var stemsEnabled: Bool = true {
+        didSet {
+            resetPhasorNodes()
+        }
+    }
 
     private var phasorNodes = [PhasorNode]()
     private var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
@@ -48,7 +53,7 @@ class GameScene: SKScene {
         phasorNodes.removeAll(keepCapacity: true)
 
         for i in 0..<numberOfPhasorNodes {
-            let phasorNode = PhasorNode(period: periods[i], radius: radii[i])
+            let phasorNode = PhasorNode(period: periods[i], radius: radii[i], showStems: stemsEnabled)
             if let lastPhasorNode = phasorNodes.last {
                 phasorNode.position = CGPoint(x: CGRectGetWidth(lastPhasorNode.line.frame), y: 0)
                 lastPhasorNode.line.addChild(phasorNode)
