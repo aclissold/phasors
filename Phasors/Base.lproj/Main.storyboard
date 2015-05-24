@@ -31,6 +31,9 @@
                                             <segment title="1"/>
                                             <segment title="2"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="phasorSelected:" destination="BV1-FR-VrT" eventType="valueChanged" id="bTU-mJ-1a7"/>
+                                        </connections>
                                     </segmentedControl>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-rT-Pkv">
                                         <rect key="frame" x="67" y="8" width="526.5" height="31"/>
@@ -103,6 +106,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="4Zb-em-Eh5" id="R6L-NF-yGm"/>
                         <outlet property="controlCenterView" destination="aMc-ka-oXz" id="LL1-YX-TWy"/>
+                        <outlet property="periodSegmentedControl" destination="iA9-Eo-fhc" id="svF-2I-A8p"/>
                         <outlet property="phasorSegmentedControl" destination="8n2-BR-PKZ" id="ipt-9q-7EI"/>
                     </connections>
                 </viewController>

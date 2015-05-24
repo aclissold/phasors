@@ -12,6 +12,7 @@ import SpriteKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var controlCenterView: UIView!
+    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var phasorSegmentedControl: UISegmentedControl!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
@@ -92,6 +93,12 @@ class GameViewController: UIViewController {
     @IBAction func periodSelected(sender: UISegmentedControl) {
         let period = periods[sender.selectedSegmentIndex]
         gameScene.setPeriod(period, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
+    }
+
+    @IBAction func phasorSelected(sender: UISegmentedControl) {
+        let index = sender.selectedSegmentIndex
+        let period = gameScene.periodForPhasor(index)
+        periodSegmentedControl.selectedSegmentIndex = find(periods, period)!
     }
 
     @IBAction func radiusChanged(sender: UISlider) {

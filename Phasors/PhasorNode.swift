@@ -13,29 +13,28 @@ class PhasorNode: SKNode {
     let line = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 30, height: 1))
     let trail = SKEmitterNode()
 
-    private let defaultPeriod: NSTimeInterval = 2
     private let particleBirthRate: CGFloat = 500
     private var globalTintColor: SKColor {
         return (UIApplication.sharedApplication().windows.first as! UIWindow).rootViewController!.view.tintColor
     }
 
-    override init() {
+    init(period: NSTimeInterval) {
         super.init()
 
         let circle = SKShapeNode(circleOfRadius: 30)
         circle.strokeColor = globalTintColor
 
         line.anchorPoint = CGPoint(x: 0, y: 0.5)
-        let rotationAction = SKAction.rotateByAngle(CGFloat(2*M_PI), duration: defaultPeriod)
+        let rotationAction = SKAction.rotateByAngle(CGFloat(2*M_PI), duration: period)
         line.runAction(SKAction.repeatActionForever(rotationAction))
 
         trail.position = CGPoint(x: line.size.width, y: 0)
-        trail.particleAlphaSpeed = CGFloat(-1/defaultPeriod)
+        trail.particleAlphaSpeed = CGFloat(-1/period)
         trail.particleBirthRate = particleBirthRate
         trail.particleTexture = SKTexture(imageNamed: "Circle")
         trail.particleColor = globalTintColor
         trail.particleColorBlendFactor = 1
-        trail.particleLifetime = CGFloat(defaultPeriod)
+        trail.particleLifetime = CGFloat(period)
         trail.targetNode = self
 
         addChild(circle)

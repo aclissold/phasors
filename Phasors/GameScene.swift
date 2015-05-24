@@ -17,13 +17,20 @@ class GameScene: SKScene {
     }
 
     private var phasorNodes = [PhasorNode]()
+    private var periods = [NSTimeInterval](count: 8, repeatedValue: 2.0)
 
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
         resetPhasorNodes()
     }
 
-    func setPeriod(period: NSTimeInterval, forPhasor phasor: Int) {
+    func periodForPhasor(index: Int) -> NSTimeInterval {
+        return periods[index]
+    }
+
+    func setPeriod(period: NSTimeInterval, forPhasor index: Int) {
+        periods[index] = period
+        resetPhasorNodes()
     }
 
     func resetPhasorNodes() {
@@ -31,7 +38,7 @@ class GameScene: SKScene {
         phasorNodes.removeAll(keepCapacity: true)
 
         for i in 0..<numberOfPhasorNodes {
-            let phasorNode = PhasorNode()
+            let phasorNode = PhasorNode(period: periods[i])
             if let lastPhasorNode = phasorNodes.last {
                 phasorNode.position = CGPoint(x: CGRectGetWidth(lastPhasorNode.line.frame), y: 0)
                 lastPhasorNode.line.addChild(phasorNode)
