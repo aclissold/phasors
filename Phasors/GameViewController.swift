@@ -74,6 +74,12 @@ class GameViewController: UIViewController {
         }
     }
 
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+    // MARK: Actions
+
     @IBAction func stemsSwitchToggled(sender: UISwitch) {
         gameScene.stemsEnabled = sender.on
     }
@@ -115,12 +121,12 @@ class GameViewController: UIViewController {
         radiusSlider.value = Float(radius)
     }
 
-    @IBAction func radiusChanged(sender: UISlider) {
+    @IBAction func radiusSliderChanged(sender: UISlider) {
         gameScene.setRadius(sender.value, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    @IBAction func trailSliderChanged(sender: UISlider) {
+        gameScene.trailDuration = sender.value
     }
 
 }

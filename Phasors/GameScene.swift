@@ -20,6 +20,12 @@ class GameScene: SKScene {
             resetPhasorNodes()
         }
     }
+    var trailDuration: Float = 1 {
+        didSet {
+            phasorNodes.last?.trail.particleAlphaSpeed = CGFloat(-1/(4*trailDuration))
+            phasorNodes.last?.trail.particleLifetime = CGFloat(4*trailDuration)
+        }
+    }
 
     private var phasorNodes = [PhasorNode]()
     private var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
