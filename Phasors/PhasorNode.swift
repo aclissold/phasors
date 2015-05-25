@@ -13,7 +13,7 @@ class PhasorNode: SKNode {
     let line = SKSpriteNode()
     let trail = SKEmitterNode()
 
-    private let particleBirthRate: CGFloat = 500
+    private let particleBirthRate: CGFloat = 1000
     private let radiusScaler: CGFloat = 60
     private var globalTintColor: SKColor {
         return (UIApplication.sharedApplication().windows.first as! UIWindow).rootViewController!.view.tintColor
