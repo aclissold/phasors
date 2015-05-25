@@ -44,8 +44,8 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-Eo-fhc">
                                         <rect key="frame" x="70" y="135" width="522" height="29"/>
                                         <segments>
-                                            <segment title="8s"/>
                                             <segment title="4s"/>
+                                            <segment title="3s"/>
                                             <segment title="2s"/>
                                             <segment title="1s"/>
                                             <segment title="0.5s"/>

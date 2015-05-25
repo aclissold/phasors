@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
 
     let gameScene = GameScene()
 
-    let periods: [NSTimeInterval] = [8, 4, 2, 1, 0.5, 0.25]
+    let periods: [NSTimeInterval] = [4, 3, 2, 1, 0.5, 0.25]
 
     override func viewDidLoad() {
         super.viewDidLoad()
