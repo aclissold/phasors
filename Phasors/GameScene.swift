@@ -22,8 +22,7 @@ class GameScene: SKScene {
     }
     var trailDuration: Float = 1 {
         didSet {
-            phasorNodes.last?.trail.particleAlphaSpeed = CGFloat(-1/(4*trailDuration))
-            phasorNodes.last?.trail.particleLifetime = CGFloat(4*trailDuration)
+            applyTrailDuration()
         }
     }
 
@@ -75,6 +74,15 @@ class GameScene: SKScene {
             }
 
             phasorNodes.append(phasorNode)
+
+            if i == numberOfPhasorNodes-1 {
+                applyTrailDuration()
+            }
         }
+    }
+
+    func applyTrailDuration() {
+        phasorNodes.last?.trail.particleAlphaSpeed = CGFloat(-1/(4*trailDuration))
+        phasorNodes.last?.trail.particleLifetime = CGFloat(4*trailDuration)
     }
 }
