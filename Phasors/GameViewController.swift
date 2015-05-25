@@ -12,10 +12,13 @@ import SpriteKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var controlCenterView: UIView!
+    @IBOutlet weak var stemsSwitch: UISwitch!
     @IBOutlet weak var flippedSwitch: UISwitch!
+    @IBOutlet weak var trailSlider: UISlider!
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var phasorSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     let gameScene = GameScene()
@@ -26,7 +29,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         addGestureRecognizers()
-        
+
         let skView = self.view as! SKView
 //        skView.showsFPS = true
 //        skView.showsNodeCount = true
@@ -75,23 +78,18 @@ class GameViewController: UIViewController {
         }
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    func setValue(value: Float, forSlider slider: UISlider) {
+        UIView.animateWithDuration(0.5, delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0,
+            options: .CurveEaseIn,
+            animations: {
+                slider.setValue(value, animated: true)
+            }, completion: nil)
     }
 
-    // MARK: Actions
-
-    @IBAction func stemsSwitchToggled(sender: UISwitch) {
-        gameScene.stemsEnabled = sender.on
-    }
-
-    @IBAction func flippedSwitchToggled(sender: UISwitch) {
-        gameScene.setFlipped(sender.on, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
-    }
-
-    @IBAction func stepperChanged(sender: UIStepper) {
+    func setNumberOfPhasorSegments(newNumberOfSegments: Int) {
         let oldNumberOfSegments = phasorSegmentedControl.numberOfSegments
-        let newNumberOfSegments = Int(sender.value)
         if newNumberOfSegments > oldNumberOfSegments {
             for i in oldNumberOfSegments..<newNumberOfSegments {
                 phasorSegmentedControl.insertSegmentWithTitle("\(i+1)", atIndex: i, animated: true)
@@ -108,6 +106,39 @@ class GameViewController: UIViewController {
             phasorSelected(phasorSegmentedControl)
         }
 
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+    // MARK: Actions
+
+    @IBAction func resetButtonPressed(sender: UIButton) {
+        gameScene.reset()
+        reset()
+    }
+
+    func reset() {
+        stemsSwitch.setOn(true, animated: true)
+        flippedSwitch.setOn(false, animated: true)
+        setValue(0.5, forSlider: trailSlider)
+        setValue(0.5, forSlider: radiusSlider)
+        periodSegmentedControl.selectedSegmentIndex = 2
+        setNumberOfPhasorSegments(2)
+        stepper.value = 2
+    }
+
+    @IBAction func stemsSwitchToggled(sender: UISwitch) {
+        gameScene.stemsEnabled = sender.on
+    }
+
+    @IBAction func flippedSwitchToggled(sender: UISwitch) {
+        gameScene.setFlipped(sender.on, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
+    }
+
+    @IBAction func stepperChanged(sender: UIStepper) {
+        setNumberOfPhasorSegments(Int(sender.value))
         gameScene.numberOfPhasorNodes = phasorSegmentedControl.numberOfSegments
     }
 
@@ -123,13 +154,7 @@ class GameViewController: UIViewController {
         periodSegmentedControl.selectedSegmentIndex = find(periods, period)!
 
         let value = Float(gameScene.radiusForPhasor(index))
-        UIView.animateWithDuration(0.5, delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 0,
-            options: .CurveEaseIn,
-            animations: {
-                self.radiusSlider.setValue(value, animated: true)
-            }, completion: nil)
+        setValue(value, forSlider: radiusSlider)
 
         let on = gameScene.flippedForPhasor(index)
         flippedSwitch.setOn(on, animated: true)

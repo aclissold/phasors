@@ -86,7 +86,7 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3h-Cb-KBH">
-                                        <rect key="frame" x="8" y="63.5" width="31" height="20.5"/>
+                                        <rect key="frame" x="8" y="63" width="31" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -105,12 +105,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TV5-y9-1bD">
-                                        <rect key="frame" x="197.5" y="20" width="51" height="31"/>
+                                        <rect key="frame" x="197" y="20" width="51" height="31"/>
                                         <color key="onTintColor" red="0.66666666669999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="flippedSwitchToggled:" destination="BV1-FR-VrT" eventType="valueChanged" id="AcI-hI-gzW"/>
                                         </connections>
                                     </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eib-jZ-1fx">
+                                        <rect key="frame" x="552" y="21" width="40" height="30"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="REM-RL-l1k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="4LX-h9-xJv" secondAttribute="trailing" constant="8" id="07W-bJ-I4E"/>
@@ -127,6 +136,7 @@
                                     <constraint firstItem="0WC-CD-w12" firstAttribute="leading" secondItem="aMc-ka-oXz" secondAttribute="leading" constant="8" id="JEb-BH-05c"/>
                                     <constraint firstItem="k9v-Yj-T1j" firstAttribute="leading" secondItem="0WC-CD-w12" secondAttribute="trailing" constant="13" id="N6C-CL-R1s"/>
                                     <constraint firstItem="4LX-h9-xJv" firstAttribute="centerY" secondItem="p3h-Cb-KBH" secondAttribute="centerY" constant="0.5" id="NUI-ME-FdG"/>
+                                    <constraint firstAttribute="trailing" secondItem="eib-jZ-1fx" secondAttribute="trailing" constant="8" id="UhW-JK-Cj8"/>
                                     <constraint firstItem="4LX-h9-xJv" firstAttribute="top" secondItem="k9v-Yj-T1j" secondAttribute="bottom" constant="8" id="UnY-GI-Vkb"/>
                                     <constraint firstItem="ITx-pK-hht" firstAttribute="leading" secondItem="aMc-ka-oXz" secondAttribute="leading" constant="8" id="V0H-83-kXA"/>
                                     <constraint firstItem="nTN-9a-53e" firstAttribute="centerY" secondItem="J5G-TH-y33" secondAttribute="centerY" constant="0.25" id="XfJ-bb-Eqh"/>
@@ -143,6 +153,7 @@
                                     <constraint firstItem="2gS-Nu-WIa" firstAttribute="leading" secondItem="k9v-Yj-T1j" secondAttribute="trailing" constant="13" id="rmL-Er-jCT"/>
                                     <constraint firstItem="k9v-Yj-T1j" firstAttribute="centerY" secondItem="0WC-CD-w12" secondAttribute="centerY" constant="0.25" id="sLH-T6-3AF"/>
                                     <constraint firstAttribute="trailing" secondItem="nTN-9a-53e" secondAttribute="trailing" constant="8" id="uQ7-Mj-MeY"/>
+                                    <constraint firstItem="TV5-y9-1bD" firstAttribute="centerY" secondItem="eib-jZ-1fx" secondAttribute="centerY" constant="-0.5" id="x1J-Cb-gnG"/>
                                     <constraint firstItem="8n2-BR-PKZ" firstAttribute="top" secondItem="ITx-pK-hht" secondAttribute="bottom" constant="13" id="y4l-dl-dFG"/>
                                 </constraints>
                             </view>
@@ -161,6 +172,9 @@
                         <outlet property="periodSegmentedControl" destination="iA9-Eo-fhc" id="svF-2I-A8p"/>
                         <outlet property="phasorSegmentedControl" destination="8n2-BR-PKZ" id="ipt-9q-7EI"/>
                         <outlet property="radiusSlider" destination="dJF-rT-Pkv" id="et3-bY-q5k"/>
+                        <outlet property="stemsSwitch" destination="k9v-Yj-T1j" id="5r3-Cx-jNg"/>
+                        <outlet property="stepper" destination="nTN-9a-53e" id="pba-dl-ukZ"/>
+                        <outlet property="trailSlider" destination="4LX-h9-xJv" id="VCC-hu-8YP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

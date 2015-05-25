@@ -12,12 +12,12 @@ class GameScene: SKScene {
 
     var numberOfPhasorNodes = 2 {
         didSet {
-            resetPhasorNodes()
+            configurePhasorNodes()
         }
     }
     var stemsEnabled: Bool = true {
         didSet {
-            resetPhasorNodes()
+            configurePhasorNodes()
         }
     }
     var trailDuration: Float = 1 {
@@ -26,14 +26,17 @@ class GameScene: SKScene {
         }
     }
 
-    private var phasorNodes = [PhasorNode]()
     private var flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
     private var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
     private var radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
 
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
-        resetPhasorNodes()
+        configurePhasorNodes()
+    }
+
+    func reset() {
+        resetProperties()
     }
 
     func flippedForPhasor(index: Int) -> Bool {
@@ -42,7 +45,7 @@ class GameScene: SKScene {
 
     func setFlipped(flipped: Bool, forPhasor index: Int) {
         flippeds[index] = flipped
-        resetPhasorNodes()
+        configurePhasorNodes()
     }
 
     func periodForPhasor(index: Int) -> NSTimeInterval {
@@ -51,7 +54,7 @@ class GameScene: SKScene {
 
     func setPeriod(period: NSTimeInterval, forPhasor index: Int) {
         periods[index] = period
-        resetPhasorNodes()
+        configurePhasorNodes()
     }
 
     func radiusForPhasor(index: Int) -> Float {
@@ -60,10 +63,20 @@ class GameScene: SKScene {
 
     func setRadius(radius: Float, forPhasor index: Int) {
         radii[index] = CGFloat(radius)
-        resetPhasorNodes()
+        configurePhasorNodes()
     }
 
-    func resetPhasorNodes() {
+    private func resetProperties() {
+        flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
+        periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
+        radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
+        numberOfPhasorNodes = 2
+        stemsEnabled = true
+        trailDuration = 1
+    }
+
+    private var phasorNodes = [PhasorNode]()
+    private func configurePhasorNodes() {
         removeChildrenInArray(phasorNodes)
         phasorNodes.removeAll(keepCapacity: true)
 
