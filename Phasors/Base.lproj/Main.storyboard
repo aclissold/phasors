@@ -86,7 +86,7 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3h-Cb-KBH">
-                                        <rect key="frame" x="8" y="63" width="31" height="21"/>
+                                        <rect key="frame" x="8" y="63.5" width="31" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -98,6 +98,19 @@
                                             <action selector="stemsSwitchToggled:" destination="BV1-FR-VrT" eventType="valueChanged" id="r7d-Dj-siH"/>
                                         </connections>
                                     </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flipped" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-Nu-WIa">
+                                        <rect key="frame" x="132" y="25" width="57.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TV5-y9-1bD">
+                                        <rect key="frame" x="197.5" y="20" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.66666666669999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="flippedSwitchToggled:" destination="BV1-FR-VrT" eventType="valueChanged" id="AcI-hI-gzW"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="4LX-h9-xJv" secondAttribute="trailing" constant="8" id="07W-bJ-I4E"/>
@@ -107,6 +120,7 @@
                                     <constraint firstAttribute="bottom" secondItem="nTN-9a-53e" secondAttribute="bottom" constant="8" id="4Zb-em-Eh5"/>
                                     <constraint firstItem="8n2-BR-PKZ" firstAttribute="centerY" secondItem="nTN-9a-53e" secondAttribute="centerY" constant="0.5" id="6Ja-iY-fnr"/>
                                     <constraint firstItem="nTN-9a-53e" firstAttribute="top" secondItem="iA9-Eo-fhc" secondAttribute="bottom" constant="8" id="6NZ-cV-JVQ"/>
+                                    <constraint firstItem="TV5-y9-1bD" firstAttribute="leading" secondItem="2gS-Nu-WIa" secondAttribute="trailing" constant="8" id="Bw1-ux-4og"/>
                                     <constraint firstItem="8n2-BR-PKZ" firstAttribute="leading" secondItem="J5G-TH-y33" secondAttribute="trailing" constant="8" id="CoI-Xa-SZc"/>
                                     <constraint firstAttribute="trailing" secondItem="dJF-rT-Pkv" secondAttribute="trailing" constant="8" id="DsQ-y9-Rv1"/>
                                     <constraint firstAttribute="trailing" secondItem="iA9-Eo-fhc" secondAttribute="trailing" constant="8" id="ES6-CZ-qqW"/>
@@ -118,12 +132,15 @@
                                     <constraint firstItem="nTN-9a-53e" firstAttribute="centerY" secondItem="J5G-TH-y33" secondAttribute="centerY" constant="0.25" id="XfJ-bb-Eqh"/>
                                     <constraint firstAttribute="height" constant="208" id="ZFQ-mF-Rwv"/>
                                     <constraint firstItem="J5G-TH-y33" firstAttribute="leading" secondItem="aMc-ka-oXz" secondAttribute="leading" constant="8" id="eR4-er-bfd"/>
+                                    <constraint firstItem="2gS-Nu-WIa" firstAttribute="centerY" secondItem="k9v-Yj-T1j" secondAttribute="centerY" id="ehL-In-s8H"/>
                                     <constraint firstItem="iA9-Eo-fhc" firstAttribute="top" secondItem="dJF-rT-Pkv" secondAttribute="bottom" constant="8" id="jYn-Hj-Kjc"/>
                                     <constraint firstItem="dJF-rT-Pkv" firstAttribute="leading" secondItem="iA9-Eo-fhc" secondAttribute="leading" id="m6I-M7-NBB"/>
+                                    <constraint firstItem="2gS-Nu-WIa" firstAttribute="centerY" secondItem="TV5-y9-1bD" secondAttribute="centerY" id="nMR-th-ugq"/>
                                     <constraint firstItem="nTN-9a-53e" firstAttribute="leading" secondItem="8n2-BR-PKZ" secondAttribute="trailing" constant="8" id="nYv-Jh-UXc"/>
                                     <constraint firstItem="dJF-rT-Pkv" firstAttribute="top" secondItem="4LX-h9-xJv" secondAttribute="bottom" constant="8" id="oTv-qS-x59"/>
                                     <constraint firstItem="4LX-h9-xJv" firstAttribute="width" secondItem="dJF-rT-Pkv" secondAttribute="width" id="rA3-y0-cOd"/>
                                     <constraint firstItem="rqb-Pk-vWG" firstAttribute="leading" secondItem="aMc-ka-oXz" secondAttribute="leading" constant="8" id="rQM-nY-Mgx"/>
+                                    <constraint firstItem="2gS-Nu-WIa" firstAttribute="leading" secondItem="k9v-Yj-T1j" secondAttribute="trailing" constant="13" id="rmL-Er-jCT"/>
                                     <constraint firstItem="k9v-Yj-T1j" firstAttribute="centerY" secondItem="0WC-CD-w12" secondAttribute="centerY" constant="0.25" id="sLH-T6-3AF"/>
                                     <constraint firstAttribute="trailing" secondItem="nTN-9a-53e" secondAttribute="trailing" constant="8" id="uQ7-Mj-MeY"/>
                                     <constraint firstItem="8n2-BR-PKZ" firstAttribute="top" secondItem="ITx-pK-hht" secondAttribute="bottom" constant="13" id="y4l-dl-dFG"/>
@@ -140,6 +157,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="4Zb-em-Eh5" id="R6L-NF-yGm"/>
                         <outlet property="controlCenterView" destination="aMc-ka-oXz" id="LL1-YX-TWy"/>
+                        <outlet property="flippedSwitch" destination="TV5-y9-1bD" id="Ggc-SG-hhU"/>
                         <outlet property="periodSegmentedControl" destination="iA9-Eo-fhc" id="svF-2I-A8p"/>
                         <outlet property="phasorSegmentedControl" destination="8n2-BR-PKZ" id="ipt-9q-7EI"/>
                         <outlet property="radiusSlider" destination="dJF-rT-Pkv" id="et3-bY-q5k"/>

@@ -12,6 +12,7 @@ import SpriteKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var controlCenterView: UIView!
+    @IBOutlet weak var flippedSwitch: UISwitch!
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var phasorSegmentedControl: UISegmentedControl!
@@ -84,6 +85,10 @@ class GameViewController: UIViewController {
         gameScene.stemsEnabled = sender.on
     }
 
+    @IBAction func flippedSwitchToggled(sender: UISwitch) {
+        gameScene.setFlipped(sender.on, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
+    }
+
     @IBAction func stepperChanged(sender: UIStepper) {
         let oldNumberOfSegments = phasorSegmentedControl.numberOfSegments
         let newNumberOfSegments = Int(sender.value)
@@ -119,6 +124,9 @@ class GameViewController: UIViewController {
 
         let radius = gameScene.radiusForPhasor(index)
         radiusSlider.value = Float(radius)
+
+        let on = gameScene.flippedForPhasor(index)
+        flippedSwitch.setOn(on, animated: true)
     }
 
     @IBAction func radiusSliderChanged(sender: UISlider) {

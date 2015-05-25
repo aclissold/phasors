@@ -19,7 +19,7 @@ class PhasorNode: SKNode {
         return (UIApplication.sharedApplication().windows.first as! UIWindow).rootViewController!.view.tintColor
     }
 
-    init(period: NSTimeInterval, radius: CGFloat, showStems shouldShowStems: Bool) {
+    init(period: NSTimeInterval, radius: CGFloat, flipped: Bool, showStems shouldShowStems: Bool) {
         super.init()
 
         if shouldShowStems {
@@ -29,7 +29,12 @@ class PhasorNode: SKNode {
         }
         line.size = CGSize(width: radiusScaler*radius, height: 1)
         line.anchorPoint = CGPoint(x: 0, y: 0.5)
-        let rotationAction = SKAction.rotateByAngle(CGFloat(2*M_PI), duration: period)
+
+        var angle = CGFloat(2*M_PI)
+        if flipped {
+            angle *= -1
+        }
+        let rotationAction = SKAction.rotateByAngle(angle, duration: period)
         line.runAction(SKAction.repeatActionForever(rotationAction))
 
         let circle = SKShapeNode(circleOfRadius: radiusScaler*radius)
