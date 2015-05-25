@@ -122,8 +122,14 @@ class GameViewController: UIViewController {
         let period = gameScene.periodForPhasor(index)
         periodSegmentedControl.selectedSegmentIndex = find(periods, period)!
 
-        let radius = gameScene.radiusForPhasor(index)
-        radiusSlider.value = Float(radius)
+        let value = Float(gameScene.radiusForPhasor(index))
+        UIView.animateWithDuration(0.5, delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0,
+            options: .CurveEaseIn,
+            animations: {
+                self.radiusSlider.setValue(value, animated: true)
+            }, completion: nil)
 
         let on = gameScene.flippedForPhasor(index)
         flippedSwitch.setOn(on, animated: true)
