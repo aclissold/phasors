@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  PhasorsScene.swift
 //  Phasors
 //
 //  Created by Andrew Clissold on 5/9/15.
@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class PhasorsScene: SKScene {
 
     var numberOfPhasorNodes = 2 {
         didSet {

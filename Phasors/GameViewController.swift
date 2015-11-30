@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
-    let gameScene = GameScene()
+    let phasorsScene = PhasorsScene()
 
     let periods: [NSTimeInterval] = [4, 3, 2, 1, 0.5, 0.25]
 
@@ -39,10 +39,10 @@ class GameViewController: UIViewController {
                 bottomConstraint.constant += 19
         }
         
-        gameScene.scaleMode = .AspectFill
-        gameScene.size = skView.frame.size
+        phasorsScene.scaleMode = .AspectFill
+        phasorsScene.size = skView.frame.size
 
-        skView.presentScene(gameScene)
+        skView.presentScene(phasorsScene)
     }
 
     func addGestureRecognizers() {
@@ -115,7 +115,7 @@ class GameViewController: UIViewController {
     // MARK: Actions
 
     @IBAction func resetButtonPressed(sender: UIButton) {
-        gameScene.reset()
+        phasorsScene.reset()
         reset()
     }
 
@@ -130,42 +130,42 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func stemsSwitchToggled(sender: UISwitch) {
-        gameScene.stemsEnabled = sender.on
+        phasorsScene.stemsEnabled = sender.on
     }
 
     @IBAction func flippedSwitchToggled(sender: UISwitch) {
-        gameScene.setFlipped(sender.on, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
+        phasorsScene.setFlipped(sender.on, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
     }
 
     @IBAction func stepperChanged(sender: UIStepper) {
         setNumberOfPhasorSegments(Int(sender.value))
-        gameScene.numberOfPhasorNodes = phasorSegmentedControl.numberOfSegments
+        phasorsScene.numberOfPhasorNodes = phasorSegmentedControl.numberOfSegments
     }
 
     @IBAction func periodSelected(sender: UISegmentedControl) {
         let period = periods[sender.selectedSegmentIndex]
-        gameScene.setPeriod(period, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
+        phasorsScene.setPeriod(period, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
     }
 
     @IBAction func phasorSelected(sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
 
-        let period = gameScene.periodForPhasor(index)
+        let period = phasorsScene.periodForPhasor(index)
         periodSegmentedControl.selectedSegmentIndex = periods.indexOf(period)!
 
-        let value = Float(gameScene.radiusForPhasor(index))
+        let value = Float(phasorsScene.radiusForPhasor(index))
         setValue(value, forSlider: radiusSlider)
 
-        let on = gameScene.flippedForPhasor(index)
+        let on = phasorsScene.flippedForPhasor(index)
         flippedSwitch.setOn(on, animated: true)
     }
 
     @IBAction func radiusSliderChanged(sender: UISlider) {
-        gameScene.setRadius(sender.value, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
+        phasorsScene.setRadius(sender.value, forPhasor: phasorSegmentedControl.selectedSegmentIndex)
     }
 
     @IBAction func trailSliderChanged(sender: UISlider) {
-        gameScene.trailDuration = sender.value
+        phasorsScene.trailDuration = sender.value
     }
 
 }

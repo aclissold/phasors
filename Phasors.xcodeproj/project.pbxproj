@@ -10,7 +10,7 @@
 		B56FCF5B1B1271E300E050B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FCF5A1B1271E300E050B1 /* Constants.swift */; };
 		B5B21BD41B1235D1000C0CF9 /* PhasorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B21BD31B1235D1000C0CF9 /* PhasorNode.swift */; };
 		B5FBDF5B1AFEA7A500E68654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBDF5A1AFEA7A500E68654 /* AppDelegate.swift */; };
-		B5FBDF5F1AFEA7A500E68654 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBDF5E1AFEA7A500E68654 /* GameScene.swift */; };
+		B5FBDF5F1AFEA7A500E68654 /* PhasorsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBDF5E1AFEA7A500E68654 /* PhasorsScene.swift */; };
 		B5FBDF611AFEA7A500E68654 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBDF601AFEA7A500E68654 /* GameViewController.swift */; };
 		B5FBDF641AFEA7A500E68654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FBDF621AFEA7A500E68654 /* Main.storyboard */; };
 		B5FBDF661AFEA7A500E68654 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5FBDF651AFEA7A500E68654 /* Images.xcassets */; };
@@ -23,7 +23,7 @@
 		B5FBDF551AFEA7A500E68654 /* Phasors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phasors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FBDF591AFEA7A500E68654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5FBDF5A1AFEA7A500E68654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5FBDF5E1AFEA7A500E68654 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B5FBDF5E1AFEA7A500E68654 /* PhasorsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhasorsScene.swift; sourceTree = "<group>"; };
 		B5FBDF601AFEA7A500E68654 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B5FBDF631AFEA7A500E68654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5FBDF651AFEA7A500E68654 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			children = (
 				B5FBDF5A1AFEA7A500E68654 /* AppDelegate.swift */,
 				B56FCF5A1B1271E300E050B1 /* Constants.swift */,
-				B5FBDF5E1AFEA7A500E68654 /* GameScene.swift */,
+				B5FBDF5E1AFEA7A500E68654 /* PhasorsScene.swift */,
 				B5B21BD31B1235D1000C0CF9 /* PhasorNode.swift */,
 				B5FBDF601AFEA7A500E68654 /* GameViewController.swift */,
 				B5FBDF621AFEA7A500E68654 /* Main.storyboard */,
@@ -155,7 +155,7 @@
 			files = (
 				B56FCF5B1B1271E300E050B1 /* Constants.swift in Sources */,
 				B5B21BD41B1235D1000C0CF9 /* PhasorNode.swift in Sources */,
-				B5FBDF5F1AFEA7A500E68654 /* GameScene.swift in Sources */,
+				B5FBDF5F1AFEA7A500E68654 /* PhasorsScene.swift in Sources */,
 				B5FBDF611AFEA7A500E68654 /* GameViewController.swift in Sources */,
 				B5FBDF5B1AFEA7A500E68654 /* AppDelegate.swift in Sources */,
 			);
