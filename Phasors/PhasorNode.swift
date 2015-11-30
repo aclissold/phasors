@@ -16,7 +16,7 @@ class PhasorNode: SKNode {
     private let particleBirthRate: CGFloat = 1000
     private let radiusScaler: CGFloat = 60
     private var globalTintColor: SKColor {
-        return (UIApplication.sharedApplication().windows.first as! UIWindow).rootViewController!.view.tintColor
+        return (UIApplication.sharedApplication().windows.first!).rootViewController!.view.tintColor
     }
 
     init(period: NSTimeInterval, radius: CGFloat, flipped: Bool, showStems shouldShowStems: Bool) {

@@ -95,7 +95,7 @@ class GameViewController: UIViewController {
                 phasorSegmentedControl.insertSegmentWithTitle("\(i+1)", atIndex: i, animated: true)
             }
         } else if newNumberOfSegments < oldNumberOfSegments {
-            for i in 0..<(oldNumberOfSegments - newNumberOfSegments) {
+            for _ in 0..<(oldNumberOfSegments - newNumberOfSegments) {
                 let index = phasorSegmentedControl.numberOfSegments-1
                 phasorSegmentedControl.removeSegmentAtIndex(index, animated: true)
             }
@@ -151,7 +151,7 @@ class GameViewController: UIViewController {
         let index = sender.selectedSegmentIndex
 
         let period = gameScene.periodForPhasor(index)
-        periodSegmentedControl.selectedSegmentIndex = find(periods, period)!
+        periodSegmentedControl.selectedSegmentIndex = periods.indexOf(period)!
 
         let value = Float(gameScene.radiusForPhasor(index))
         setValue(value, forSlider: radiusSlider)
