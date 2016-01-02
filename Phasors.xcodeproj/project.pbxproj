@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B56FCF5B1B1271E300E050B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FCF5A1B1271E300E050B1 /* Constants.swift */; };
 		B5B21BD41B1235D1000C0CF9 /* PhasorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B21BD31B1235D1000C0CF9 /* PhasorNode.swift */; };
 		B5FBDF5B1AFEA7A500E68654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBDF5A1AFEA7A500E68654 /* AppDelegate.swift */; };
 		B5FBDF5F1AFEA7A500E68654 /* PhasorsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBDF5E1AFEA7A500E68654 /* PhasorsScene.swift */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B56FCF5A1B1271E300E050B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5B21BD31B1235D1000C0CF9 /* PhasorNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhasorNode.swift; sourceTree = "<group>"; };
 		B5FBDF551AFEA7A500E68654 /* Phasors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phasors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FBDF591AFEA7A500E68654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				B5FBDF5A1AFEA7A500E68654 /* AppDelegate.swift */,
-				B56FCF5A1B1271E300E050B1 /* Constants.swift */,
 				B5FBDF5E1AFEA7A500E68654 /* PhasorsScene.swift */,
 				B5B21BD31B1235D1000C0CF9 /* PhasorNode.swift */,
 				B5FBDF601AFEA7A500E68654 /* GameViewController.swift */,
@@ -153,7 +150,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B56FCF5B1B1271E300E050B1 /* Constants.swift in Sources */,
 				B5B21BD41B1235D1000C0CF9 /* PhasorNode.swift in Sources */,
 				B5FBDF5F1AFEA7A500E68654 /* PhasorsScene.swift in Sources */,
 				B5FBDF611AFEA7A500E68654 /* GameViewController.swift in Sources */,

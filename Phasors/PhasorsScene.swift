@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+private let maxNumberOfPhasors = 6
+
 class PhasorsScene: SKScene {
 
     var numberOfPhasorNodes = 2 {
