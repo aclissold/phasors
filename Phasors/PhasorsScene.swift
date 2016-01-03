@@ -85,9 +85,9 @@ class PhasorsScene: SKScene {
                 radius: radii[i],
                 flipped: flippeds[i],
                 showStems: stemsEnabled)
-            if let lastPhasorNode = phasorNodes.last {
-                phasorNode.position = CGPoint(x: CGRectGetWidth(lastPhasorNode.line.frame), y: 0)
-                lastPhasorNode.line.addChild(phasorNode)
+            if let previousPhasorNode = phasorNodes.last {
+                phasorNode.position = CGPoint(x: CGRectGetWidth(previousPhasorNode.line.frame), y: 0)
+                previousPhasorNode.line.addChild(phasorNode)
             } else {
                 let midX = CGRectGetMidX(frame), midY = CGRectGetMidY(frame)
                 phasorNode.position = CGPoint(x: midX, y: midY)
