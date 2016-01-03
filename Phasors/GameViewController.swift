@@ -165,7 +165,7 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func trailSliderChanged(sender: UISlider) {
-        phasorsScene.trailDuration = sender.value
+        // TODO
     }
 
 }

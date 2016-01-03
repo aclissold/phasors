@@ -11,9 +11,7 @@ import SpriteKit
 class PhasorNode: SKNode {
 
     let line = SKSpriteNode()
-    let trail = SKEmitterNode()
 
-    private let particleBirthRate: CGFloat = 1000
     private let radiusScaler: CGFloat = 60
     private var globalTintColor: SKColor {
         return (UIApplication.sharedApplication().windows.first!).rootViewController!.view.tintColor
@@ -42,26 +40,8 @@ class PhasorNode: SKNode {
             circle.strokeColor = globalTintColor
         }
 
-        trail.position = CGPoint(x: line.size.width, y: 0)
-        trail.particleAlphaSpeed = CGFloat(-1/period)
-        trail.particleBirthRate = particleBirthRate
-        trail.particleTexture = SKTexture(imageNamed: "Circle")
-        trail.particleColor = globalTintColor
-        trail.particleColorBlendFactor = 1
-        trail.particleLifetime = CGFloat(period)
-        trail.targetNode = self
-
         addChild(circle)
         circle.addChild(line)
-        line.addChild(trail)
-    }
-
-    func showTrail() {
-        trail.particleBirthRate = particleBirthRate
-    }
-
-    func hideTrail() {
-        trail.particleBirthRate = 0
     }
 
     required init?(coder aDecoder: NSCoder) {

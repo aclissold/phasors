@@ -22,11 +22,6 @@ class PhasorsScene: SKScene {
             configurePhasorNodes()
         }
     }
-    var trailDuration: Float = 1 {
-        didSet {
-            applyTrailDuration()
-        }
-    }
 
     private var flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
     private var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
@@ -74,7 +69,6 @@ class PhasorsScene: SKScene {
         radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
         numberOfPhasorNodes = 2
         stemsEnabled = true
-        trailDuration = 1
     }
 
     private var phasorNodes = [PhasorNode]()
@@ -96,22 +90,9 @@ class PhasorsScene: SKScene {
                 phasorNode.position = CGPoint(x: midX, y: midY)
                 addChild(phasorNode)
             }
-            phasorNode.trail.targetNode = self
-
-            if i != numberOfPhasorNodes-1 {
-                phasorNode.hideTrail()
-            }
 
             phasorNodes.append(phasorNode)
-
-            if i == numberOfPhasorNodes-1 {
-                applyTrailDuration()
-            }
         }
     }
 
-    func applyTrailDuration() {
-        phasorNodes.last?.trail.particleAlphaSpeed = CGFloat(-1/(4*trailDuration))
-        phasorNodes.last?.trail.particleLifetime = CGFloat(4*trailDuration)
-    }
 }
