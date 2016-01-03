@@ -35,13 +35,7 @@ class PhasorNode: SKNode {
         let rotationAction = SKAction.rotateByAngle(angle, duration: period)
         line.runAction(SKAction.repeatActionForever(rotationAction))
 
-        let circle = SKShapeNode(circleOfRadius: radiusScaler*radius)
-        if shouldShowStems {
-            circle.strokeColor = globalTintColor
-        }
-
-        addChild(circle)
-        circle.addChild(line)
+        addChild(line)
     }
 
     required init?(coder aDecoder: NSCoder) {
