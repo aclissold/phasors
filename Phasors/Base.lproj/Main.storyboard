@@ -156,9 +156,17 @@
                                     <constraint firstItem="8n2-BR-PKZ" firstAttribute="top" secondItem="ITx-pK-hht" secondAttribute="bottom" constant="13" id="y4l-dl-dFG"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgD-hj-H5K" userLabel="Tap View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="364"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aMc-ka-oXz" firstAttribute="top" secondItem="rgD-hj-H5K" secondAttribute="bottom" constant="8" symbolic="YES" id="AW7-Aq-xtA"/>
+                            <constraint firstAttribute="trailing" secondItem="rgD-hj-H5K" secondAttribute="trailing" id="VhC-al-gbZ"/>
+                            <constraint firstItem="rgD-hj-H5K" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="YVB-Tp-GH9"/>
+                            <constraint firstItem="rgD-hj-H5K" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" id="ZPa-DB-cJ1"/>
                             <constraint firstItem="khH-OB-KpY" firstAttribute="top" secondItem="aMc-ka-oXz" secondAttribute="bottom" id="tnx-SA-VOd"/>
                             <constraint firstItem="aMc-ka-oXz" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="vwo-VX-woT"/>
                             <constraint firstAttribute="trailing" secondItem="aMc-ka-oXz" secondAttribute="trailing" id="wUx-9M-Rsd"/>
@@ -173,6 +181,7 @@
                         <outlet property="radiusSlider" destination="dJF-rT-Pkv" id="et3-bY-q5k"/>
                         <outlet property="stemsSwitch" destination="k9v-Yj-T1j" id="5r3-Cx-jNg"/>
                         <outlet property="stepper" destination="nTN-9a-53e" id="pba-dl-ukZ"/>
+                        <outlet property="tapView" destination="rgD-hj-H5K" id="YXN-tM-0PB"/>
                         <outlet property="trailSlider" destination="4LX-h9-xJv" id="VCC-hu-8YP"/>
                     </connections>
                 </viewController>

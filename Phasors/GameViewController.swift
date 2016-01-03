@@ -11,6 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var tapView: UIView!
     @IBOutlet weak var controlCenterView: UIView!
     @IBOutlet weak var stemsSwitch: UISwitch!
     @IBOutlet weak var flippedSwitch: UISwitch!
@@ -22,13 +23,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     let phasorsScene = PhasorsScene()
-
     let periods: [NSTimeInterval] = [4, 3, 2, 1, 0.5, 0.25]
+
+    var controlCenterViewHiding = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addGestureRecognizers()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTap:")
+        tapView.addGestureRecognizer(tapGestureRecognizer)
         phasorSegmentedControl.removeSegmentAtIndex(1, animated: false)
 
         let skView = self.view as! SKView
@@ -46,28 +49,10 @@ class GameViewController: UIViewController {
         skView.presentScene(phasorsScene)
     }
 
-    func addGestureRecognizers() {
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
-        swipeUpGestureRecognizer.direction = .Up
-
-        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
-        swipeDownGestureRecognizer.direction = .Down
-
-        view.addGestureRecognizer(swipeUpGestureRecognizer)
-        view.addGestureRecognizer(swipeDownGestureRecognizer)
-    }
-
-    func handleSwipe(recognizer: UISwipeGestureRecognizer) {
-        if !controlCenterView.hidden && recognizer.direction == .Down {
-            // Hide.
-            UIView.animateWithDuration(0.4, animations: {
-                self.controlCenterView.frame.origin.y += self.controlCenterView.frame.size.height + self.bottomConstraint.constant
-                }, completion: { _ in
-                    self.controlCenterView.hidden = true
-                })
-        } else if controlCenterView.hidden && recognizer.direction == .Up {
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        if controlCenterViewHiding {
             // Show.
-            controlCenterView.hidden = false
+            controlCenterViewHiding = false
             UIView.animateWithDuration(0.6,
                 delay: 0,
                 usingSpringWithDamping: 0.75,
@@ -76,6 +61,11 @@ class GameViewController: UIViewController {
                 animations: {
                     self.controlCenterView.frame.origin.y -= self.controlCenterView.frame.size.height + self.bottomConstraint.constant
                 }, completion: nil)
+        } else {
+            controlCenterViewHiding = true
+            UIView.animateWithDuration(0.4) {
+                self.controlCenterView.frame.origin.y += self.controlCenterView.frame.size.height + self.bottomConstraint.constant
+            }
         }
     }
 
