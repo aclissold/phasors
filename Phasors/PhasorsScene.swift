@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-private let maxNumberOfPhasors = 6
+private let maxNumberOfPhasors = 8
 
 class PhasorsScene: SKScene {
 
