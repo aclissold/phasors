@@ -13,9 +13,6 @@ class PhasorNode: SKNode {
     let line = SKSpriteNode()
 
     private let radiusScaler: CGFloat = 60
-    private var globalTintColor: SKColor {
-        return (UIApplication.sharedApplication().windows.first!).rootViewController!.view.tintColor
-    }
 
     init(period: NSTimeInterval, radius: CGFloat, flipped: Bool, showStems shouldShowStems: Bool) {
         super.init()

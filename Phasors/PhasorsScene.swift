@@ -9,6 +9,7 @@
 import SpriteKit
 
 private let maxNumberOfPhasors = 8
+private let resolution: NSTimeInterval = 0.00001
 
 class PhasorsScene: SKScene {
 
@@ -25,13 +26,40 @@ class PhasorsScene: SKScene {
         }
     }
 
-    private var flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
-    private var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
-    private var radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
+    let updateFrequency: NSTimeInterval = 1*resolution
+    let trailSegmentFadeOutDuration: NSTimeInterval = 2/resolution
+
+    var previousBeaconPosition = CGPointZero
+    var previousUpdateTime: NSTimeInterval = 0
+    var flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
+    var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
+    var radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
 
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
         configurePhasorNodes()
+    }
+
+    override func update(currentTime: NSTimeInterval) {
+        if (currentTime - previousUpdateTime > updateFrequency) {
+            let position = convertPoint(beaconNode.position, fromNode: beaconNode)
+
+            let trailSegmentPath = CGPathCreateMutable()
+            CGPathMoveToPoint(trailSegmentPath, nil, previousBeaconPosition.x, previousBeaconPosition.y)
+            CGPathAddLineToPoint(trailSegmentPath, nil, position.x, position.y)
+            CGPathCloseSubpath(trailSegmentPath)
+
+            let trailSegment = SKShapeNode(path: trailSegmentPath)
+            trailSegment.strokeColor = UIView.appearance().tintColor
+
+            addChild(trailSegment)
+            trailSegment.runAction(SKAction.fadeOutWithDuration(updateFrequency*trailSegmentFadeOutDuration)) {
+                trailSegment.removeFromParent()
+            }
+
+            previousUpdateTime = currentTime
+            previousBeaconPosition = position
+        }
     }
 
     func reset() {
