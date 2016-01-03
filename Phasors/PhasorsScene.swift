@@ -9,7 +9,6 @@
 import SpriteKit
 
 private let maxNumberOfPhasors = 8
-private let resolution: NSTimeInterval = 0.00001
 
 class PhasorsScene: SKScene {
 
@@ -26,11 +25,10 @@ class PhasorsScene: SKScene {
         }
     }
 
-    let updateFrequency: NSTimeInterval = 1*resolution
-    let trailSegmentFadeOutDuration: NSTimeInterval = 2/resolution
+    let thickness: CGFloat = 5
+    let trailSegmentFadeOutDuration: NSTimeInterval = 2
 
     var previousBeaconPosition = CGPointZero
-    var previousUpdateTime: NSTimeInterval = 0
     var flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
     var periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
     var radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
@@ -41,25 +39,32 @@ class PhasorsScene: SKScene {
     }
 
     override func update(currentTime: NSTimeInterval) {
-        if (currentTime - previousUpdateTime > updateFrequency) {
-            let position = convertPoint(beaconNode.position, fromNode: beaconNode)
+        let currentBeaconPosition = convertPoint(beaconNode.position, fromNode: beaconNode)
 
-            let trailSegmentPath = CGPathCreateMutable()
-            CGPathMoveToPoint(trailSegmentPath, nil, previousBeaconPosition.x, previousBeaconPosition.y)
-            CGPathAddLineToPoint(trailSegmentPath, nil, position.x, position.y)
-            CGPathCloseSubpath(trailSegmentPath)
+        let distance = hypot(
+            previousBeaconPosition.x - currentBeaconPosition.x,
+            previousBeaconPosition.y - currentBeaconPosition.y)
+        let size = CGSize(width: distance, height: thickness)
+        let rect = CGRect(origin: CGPointZero, size: size)
+        let angle = atan2(
+            currentBeaconPosition.y - previousBeaconPosition.y,
+            currentBeaconPosition.x - previousBeaconPosition.x)
 
-            let trailSegment = SKShapeNode(path: trailSegmentPath)
-            trailSegment.strokeColor = UIView.appearance().tintColor
+        let trailSegment = SKShapeNode(rect: rect)
+        trailSegment.zRotation = angle
+        trailSegment.position = previousBeaconPosition
 
-            addChild(trailSegment)
-            trailSegment.runAction(SKAction.fadeOutWithDuration(updateFrequency*trailSegmentFadeOutDuration)) {
-                trailSegment.removeFromParent()
-            }
+        let color = UIView.appearance().tintColor
+        trailSegment.fillColor = color
+        trailSegment.lineWidth = 0
 
-            previousUpdateTime = currentTime
-            previousBeaconPosition = position
+        addChild(trailSegment)
+
+        trailSegment.runAction(SKAction.fadeOutWithDuration(trailSegmentFadeOutDuration)) {
+            trailSegment.removeFromParent()
         }
+
+        previousBeaconPosition = currentBeaconPosition
     }
 
     func reset() {
