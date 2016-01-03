@@ -14,7 +14,7 @@ class PhasorsScene: SKScene {
 
     let beaconNode = SKNode()
 
-    var numberOfPhasorNodes = 2 {
+    var numberOfPhasorNodes = 1 {
         didSet {
             configurePhasorNodes()
         }
@@ -69,7 +69,7 @@ class PhasorsScene: SKScene {
         flippeds = [Bool](count: maxNumberOfPhasors, repeatedValue: false)
         periods = [NSTimeInterval](count: maxNumberOfPhasors, repeatedValue: 2.0)
         radii = [CGFloat](count: maxNumberOfPhasors, repeatedValue: 0.5)
-        numberOfPhasorNodes = 2
+        numberOfPhasorNodes = 1
         stemsEnabled = true
     }
 

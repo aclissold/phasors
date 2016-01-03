@@ -29,6 +29,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         addGestureRecognizers()
+        phasorSegmentedControl.removeSegmentAtIndex(1, animated: false)
 
         let skView = self.view as! SKView
 //        skView.showsFPS = true
@@ -125,8 +126,8 @@ class GameViewController: UIViewController {
         setValue(0.5, forSlider: trailSlider)
         setValue(0.5, forSlider: radiusSlider)
         periodSegmentedControl.selectedSegmentIndex = 2
-        setNumberOfPhasorSegments(2)
-        stepper.value = 2
+        setNumberOfPhasorSegments(1)
+        stepper.value = 1
     }
 
     @IBAction func stemsSwitchToggled(sender: UISwitch) {

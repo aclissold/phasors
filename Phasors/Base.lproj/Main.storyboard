@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-ka-oXz">
                                 <rect key="frame" x="0.0" y="392" width="600" height="208"/>
                                 <subviews>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="1" maximumValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="nTN-9a-53e">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="nTN-9a-53e">
                                         <rect key="frame" x="498" y="171" width="94" height="29"/>
                                         <connections>
                                             <action selector="stepperChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="jAh-Ry-AQL"/>
