@@ -203,10 +203,10 @@
                         <outlet property="controlCenterView" destination="aMc-ka-oXz" id="LL1-YX-TWy"/>
                         <outlet property="flippedSwitch" destination="TV5-y9-1bD" id="Ggc-SG-hhU"/>
                         <outlet property="periodSegmentedControl" destination="iA9-Eo-fhc" id="svF-2I-A8p"/>
+                        <outlet property="phasorCountStepper" destination="nTN-9a-53e" id="S8y-A2-Md2"/>
                         <outlet property="phasorSegmentedControl" destination="8n2-BR-PKZ" id="ipt-9q-7EI"/>
                         <outlet property="radiusSlider" destination="dJF-rT-Pkv" id="et3-bY-q5k"/>
                         <outlet property="stemsSwitch" destination="k9v-Yj-T1j" id="5r3-Cx-jNg"/>
-                        <outlet property="stepper" destination="nTN-9a-53e" id="pba-dl-ukZ"/>
                         <outlet property="tapView" destination="rgD-hj-H5K" id="YXN-tM-0PB"/>
                         <outlet property="trailSlider" destination="4LX-h9-xJv" id="VCC-hu-8YP"/>
                     </connections>

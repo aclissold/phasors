@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var phasorSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var phasorCountStepper: UIStepper!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     let phasorsScene = PhasorsScene()
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         setValue(0.5, forSlider: radiusSlider)
         periodSegmentedControl.selectedSegmentIndex = 2
         setNumberOfPhasorSegments(1)
-        stepper.value = 1
+        phasorCountStepper.value = 1
     }
 
     @IBAction func stemsSwitchToggled(sender: UISwitch) {
