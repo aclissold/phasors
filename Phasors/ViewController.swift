@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     let periods: [NSTimeInterval] = [4, 3, 2, 1, 0.5, 0.25]
 
     var controlCenterViewHiding = false
+    var originalBottomConstraintConstant: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
             skView.showsNodeCount || skView.showsPhysics || skView.showsQuadCount {
                 bottomConstraint.constant += 19
         }
+        originalBottomConstraintConstant = bottomConstraint.constant
 
         phasorsScene.scaleMode = .AspectFill
         phasorsScene.size = skView.frame.size
@@ -53,8 +55,12 @@ class ViewController: UIViewController {
     }
 
     func handleTap(recognizer: UITapGestureRecognizer) {
+        view.layoutIfNeeded()
+
         if controlCenterViewHiding {
-            // Show.
+            self.bottomConstraint.constant +=
+                self.controlCenterView.frame.size.height +
+                self.originalBottomConstraintConstant
             controlCenterViewHiding = false
             UIView.animateWithDuration(0.6,
                 delay: 0,
@@ -62,12 +68,15 @@ class ViewController: UIViewController {
                 initialSpringVelocity: 0.25,
                 options: .CurveEaseIn,
                 animations: {
-                    self.controlCenterView.frame.origin.y -= self.controlCenterView.frame.size.height + self.bottomConstraint.constant
+                    self.view.layoutIfNeeded()
                 }, completion: nil)
         } else {
+            self.bottomConstraint.constant -=
+                self.controlCenterView.frame.size.height +
+                self.originalBottomConstraintConstant
             controlCenterViewHiding = true
             UIView.animateWithDuration(0.4) {
-                self.controlCenterView.frame.origin.y += self.controlCenterView.frame.size.height + self.bottomConstraint.constant
+                self.view.layoutIfNeeded()
             }
         }
     }

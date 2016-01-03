@@ -173,7 +173,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="4Zb-em-Eh5" id="R6L-NF-yGm"/>
+                        <outlet property="bottomConstraint" destination="tnx-SA-VOd" id="ApB-77-OCV"/>
                         <outlet property="controlCenterView" destination="aMc-ka-oXz" id="LL1-YX-TWy"/>
                         <outlet property="flippedSwitch" destination="TV5-y9-1bD" id="Ggc-SG-hhU"/>
                         <outlet property="periodSegmentedControl" destination="iA9-Eo-fhc" id="svF-2I-A8p"/>
