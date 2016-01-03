@@ -34,7 +34,10 @@ class ViewController: UIViewController {
         tapView.addGestureRecognizer(tapGestureRecognizer)
         phasorSegmentedControl.removeSegmentAtIndex(1, animated: false)
 
-        let skView = self.view as! SKView
+        guard let skView = view as? SKView else {
+            return
+        }
+
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
@@ -42,7 +45,7 @@ class ViewController: UIViewController {
             skView.showsNodeCount || skView.showsPhysics || skView.showsQuadCount {
                 bottomConstraint.constant += 19
         }
-        
+
         phasorsScene.scaleMode = .AspectFill
         phasorsScene.size = skView.frame.size
 
