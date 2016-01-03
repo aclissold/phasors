@@ -12,6 +12,8 @@ private let maxNumberOfPhasors = 6
 
 class PhasorsScene: SKScene {
 
+    let beaconNode = SKNode()
+
     var numberOfPhasorNodes = 2 {
         didSet {
             configurePhasorNodes()
@@ -73,6 +75,7 @@ class PhasorsScene: SKScene {
 
     private var phasorNodes = [PhasorNode]()
     private func configurePhasorNodes() {
+        beaconNode.removeFromParent()
         removeChildrenInArray(phasorNodes)
         phasorNodes.removeAll(keepCapacity: true)
 
@@ -92,6 +95,11 @@ class PhasorsScene: SKScene {
             }
 
             phasorNodes.append(phasorNode)
+        }
+
+        if let finalPhasorNode = phasorNodes.last {
+            beaconNode.position = CGPoint(x: finalPhasorNode.line.frame.width, y: 0)
+            finalPhasorNode.line.addChild(beaconNode)
         }
     }
 
