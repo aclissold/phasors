@@ -98,7 +98,7 @@ class PhasorsScene: SKScene {
         }
 
         if let finalPhasorNode = phasorNodes.last {
-            beaconNode.position = CGPoint(x: finalPhasorNode.line.frame.width, y: 0)
+            beaconNode.position = CGPoint(x: finalPhasorNode.line.size.width/2, y: 0)
             finalPhasorNode.line.addChild(beaconNode)
         }
     }
