@@ -60,9 +60,15 @@ class PhasorsScene: SKScene {
 
         addChild(trailSegment)
 
-        trailSegment.runAction(SKAction.fadeOutWithDuration(trailSegmentFadeOutDuration)) {
+        trailSegment.runAction(SKAction.customActionWithDuration(trailSegmentFadeOutDuration, actionBlock: { (_, elapsedTime) in
+            let percent = elapsedTime / CGFloat(self.trailSegmentFadeOutDuration)
+            let red: CGFloat = (170.0 + (percent * (255.0 - 170.0))) / 255.0
+            let green: CGFloat = (percent * 255.0) / 255.0
+            let blue: CGFloat = (percent * 255.0) / 255.0
+            trailSegment.fillColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        }), completion: {
             trailSegment.removeFromParent()
-        }
+        })
 
         previousBeaconPosition = currentBeaconPosition
     }
