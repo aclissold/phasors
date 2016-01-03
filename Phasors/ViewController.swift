@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  ViewController.swift
 //  Phasors
 //
 //  Created by Andrew Clissold on 5/9/15.
@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class ViewController: UIViewController {
 
     @IBOutlet weak var tapView: UIView!
     @IBOutlet weak var controlCenterView: UIView!
